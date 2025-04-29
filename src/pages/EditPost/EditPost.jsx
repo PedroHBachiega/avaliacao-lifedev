@@ -1,11 +1,12 @@
-import styles from './CreatePost.module.css'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import styles from './EditPost.module.css'
+import { useState, useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useAuthValue } from '../../context/AuthContext'
 import { db } from '../../firebase/config'
-import { collection, addDoc, Timestamp } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 
-const CreatePost = () => {
+const EditPost = () => {
+    const { id } = useParams()
     const navigate = useNavigate()
     const [title, setTitle] = useState("")
     const [body, setBody] = useState("")
@@ -14,6 +15,40 @@ const CreatePost = () => {
     const [loading, setLoading] = useState(false)
 
     const { user } = useAuthValue()
+
+    useEffect(() => {
+        const fetchPost = async () => {
+            setLoading(true)
+            try {
+                const docRef = doc(db, "posts", id)
+                const docSnap = await getDoc(docRef)
+
+                if (docSnap.exists()) {
+                    const data = docSnap.data()
+                    
+                    // Verificar se o usuário é o autor do post
+                    if(data.uid !== user.uid) {
+                        navigate("/dashboard")
+                        return
+                    }
+                    
+                    setTitle(data.title)
+                    setBody(data.body)
+                    setTags(data.tags.join(", "))
+                } else {
+                    navigate("/dashboard")
+                    return
+                }
+            } catch (error) {
+                console.error("Erro ao buscar post:", error)
+                setFormError("Erro ao carregar o post para edição")
+            } finally {
+                setLoading(false)
+            }
+        }
+
+        fetchPost()
+    }, [id, navigate, user.uid])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -31,29 +66,27 @@ const CreatePost = () => {
         const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase())
 
         try {
-            // Criar novo post
-            await addDoc(collection(db, "posts"), {
+            // Atualizar post existente
+            const postRef = doc(db, "posts", id)
+            await updateDoc(postRef, {
                 title,
                 body,
                 tags: tagsArray,
-                uid: user.uid,
-                createdBy: user.displayName,
-                createdAt: Timestamp.now()
             })
 
             // Redirecionar para o dashboard
             navigate("/dashboard")
         } catch (error) {
             console.error(error)
-            setFormError("Erro ao criar o post")
+            setFormError("Erro ao editar o post")
             setLoading(false)
         }
     }
 
     return (
-        <div className={styles.create_post}>
-            <h2>Criar Post</h2>
-            <p>Crie seu post e compartilhe seu conhecimento</p>
+        <div className={styles.edit_post}>
+            <h2>Editar Post</h2>
+            <p>Altere os dados do seu post</p>
 
             <form onSubmit={handleSubmit}>
                 <label>
@@ -92,7 +125,7 @@ const CreatePost = () => {
                     />
                 </label>
 
-                {!loading && <button className="btn">Criar</button>}
+                {!loading && <button className="btn">Salvar</button>}
                 {loading && <button className="btn" disabled>Aguarde...</button>}
                 {formError && <p className={styles.error}>{formError}</p>}
             </form>
@@ -100,4 +133,4 @@ const CreatePost = () => {
     )
 }
 
-export default CreatePost
+export default EditPost 
