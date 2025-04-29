@@ -2,24 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    padding: 2em;
   }
   
   .search_form {
     max-width: 100%;
     width: 60%;
     display: flex;
-    justify-content: center;
     margin-bottom: 2em;
   }
   
   .search_form input {
+    flex: 1;
     margin-right: 10px;
-    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    font-size: 1em;
   }
   
   .noposts {
     text-align: center;
+    margin-bottom: 2em;
   }
   
   .noposts p {
@@ -28,4 +33,54 @@
   
   .noposts a {
     padding: 10px 25px;
+  }
+  
+  .post_list {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .post {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .post h2 {
+    margin-bottom: 0.4em;
+  }
+  
+  .post .author {
+    font-style: italic;
+    color: #444;
+    margin-bottom: 1em;
+    font-size: 0.8em;
+  }
+  
+  .post .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+  }
+  
+  .post .tags span {
+    margin-right: 0.5em;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: #333;
+  }
+  
+  .error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 1em;
   }

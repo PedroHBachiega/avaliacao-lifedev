@@ -1,0 +1,44 @@
+.post_container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post_container h1 {
+    margin-bottom: 0.5em;
+    font-size: 2em;
+}
+
+.post_author {
+    margin-bottom: 2em;
+    color: #444;
+}
+
+.post_content {
+    margin-bottom: 1.5em;
+    line-height: 1.6;
+}
+
+.error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 1em;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1em 0;
+}
+
+.tags span {
+    margin-right: 0.5em;
+    background-color: #f1f1f1;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    color: #333;
+} 
