@@ -3,6 +3,8 @@ import {
     signInWithEmailAndPassword,
     updateProfile,
     signOut,
+    GoogleAuthProvider,
+    signInWithPopup
   } from 'firebase/auth'
   import { auth } from "../firebase/config"
   import { useState, useEffect } from "react"
@@ -96,6 +98,33 @@ import {
       setLoading(false);
     };
   
+    // Método de login com Google
+    const loginWithGoogle = async () => {
+      checkIfIsCancelled();
+  
+      setLoading(true);
+      setError(false);
+  
+      try {
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        return result.user;
+      } catch (error) {
+        console.log(error);
+        let systemErrorMessage;
+  
+        if (error.code === 'auth/popup-closed-by-user') {
+          systemErrorMessage = "Login com Google cancelado pelo usuário.";
+        } else {
+          systemErrorMessage = "Erro ao fazer login com Google. Tente novamente mais tarde.";
+        }
+  
+        setError(systemErrorMessage);
+      }
+  
+      setLoading(false);
+    };
+  
     useEffect(() => {
       return () => setCancelled(true);
     }, []);
@@ -106,6 +135,7 @@ import {
       error,
       logout,
       login,
+      loginWithGoogle,
       loading,
     };
   };
