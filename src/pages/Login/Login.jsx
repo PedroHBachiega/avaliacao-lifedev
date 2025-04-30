@@ -1,14 +1,15 @@
 import styles from './Login.module.css'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
-
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    const navigate = useNavigate()
 
-    const { login, error: authError, loading } = useAuthentication()
+    const { login, loginWithGoogle, error: authError, loading } = useAuthentication()
 
     const handlerSubmit = async (e) => {
         e.preventDefault()
@@ -22,6 +23,15 @@ const Login = () => {
         const res = await login(user)
 
         console.log(res)
+    }
+
+    const handleGoogleLogin = async () => {
+        try {
+            await loginWithGoogle()
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
@@ -60,8 +70,19 @@ const Login = () => {
                 </label>
                 {!loading && <button className='btn'>Entrar</button>}
                 {loading && <button className='btn' disabled>Aguarde... </button>}
-                {error && <p>{error}</p>}
+                {error && <p className={styles.error}>{error}</p>}
             </form>
+
+            <div className={styles.google_login}>
+                <p>OU</p>
+                <button 
+                    onClick={handleGoogleLogin} 
+                    className={styles.google_btn}
+                    disabled={loading}
+                >
+                    Entrar com Google
+                </button>
+            </div>
         </div>
     )
 }
