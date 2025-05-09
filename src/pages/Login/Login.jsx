@@ -1,7 +1,7 @@
 import styles from './Login.module.css'
 import { useEffect, useState } from 'react'
 import { useAuthentication } from '../../hooks/useAuthentication'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -9,7 +9,15 @@ const Login = () => {
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
-    const { login, loginWithGoogle, error: authError, loading } = useAuthentication()
+    const { 
+        login, 
+        loginWithGoogle, 
+        loginWithFacebook, 
+        loginWithTwitter, 
+        loginWithGithub, 
+        error: authError, 
+        loading 
+    } = useAuthentication()
 
     const handlerSubmit = async (e) => {
         e.preventDefault()
@@ -28,6 +36,33 @@ const Login = () => {
     const handleGoogleLogin = async () => {
         try {
             await loginWithGoogle()
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleFacebookLogin = async () => {
+        try {
+            await loginWithFacebook()
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleTwitterLogin = async () => {
+        try {
+            await loginWithTwitter()
+            navigate("/dashboard")
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const handleGithubLogin = async () => {
+        try {
+            await loginWithGithub()
             navigate("/dashboard")
         } catch (error) {
             console.log(error)
@@ -71,16 +106,40 @@ const Login = () => {
                 {!loading && <button className='btn'>Entrar</button>}
                 {loading && <button className='btn' disabled>Aguarde... </button>}
                 {error && <p className={styles.error}>{error}</p>}
+                <div className={styles.forgot_password}>
+                    <Link to="/reset-password">Esqueceu sua senha?</Link>
+                </div>
             </form>
 
-            <div className={styles.google_login}>
+            <div className={styles.social_login}>
                 <p>OU</p>
                 <button 
                     onClick={handleGoogleLogin} 
-                    className={styles.google_btn}
+                    className={`${styles.social_btn} ${styles.google_btn}`}
                     disabled={loading}
                 >
-                    Entrar com Google
+                    <i className="fab fa-google"></i> Entrar com Google
+                </button>
+                <button 
+                    onClick={handleFacebookLogin} 
+                    className={`${styles.social_btn} ${styles.facebook_btn}`}
+                    disabled={loading}
+                >
+                    <i className="fab fa-facebook-f"></i> Entrar com Facebook
+                </button>
+                <button 
+                    onClick={handleTwitterLogin} 
+                    className={`${styles.social_btn} ${styles.twitter_btn}`}
+                    disabled={loading}
+                >
+                    <i className="fab fa-twitter"></i> Entrar com Twitter
+                </button>
+                <button 
+                    onClick={handleGithubLogin} 
+                    className={`${styles.social_btn} ${styles.github_btn}`}
+                    disabled={loading}
+                >
+                    <i className="fab fa-github"></i> Entrar com GitHub
                 </button>
             </div>
         </div>

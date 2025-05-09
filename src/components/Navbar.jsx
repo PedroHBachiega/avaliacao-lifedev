@@ -32,6 +32,9 @@ const Navbar = () => {
               <NavLink to="/posts/create" className={({isActive}) => (isActive ? `${styles.link} ${styles.active}` : styles.link)}>
                 <li>Criar Post</li>
               </NavLink>
+              <NavLink to="/profile" className={({isActive}) => (isActive ? `${styles.link} ${styles.active}` : styles.link)}>
+                <li>Perfil</li>
+              </NavLink>
               <li className={styles.user_name}>Olá, {user.displayName}</li>
               <button onClick={logout} className={styles.exit}>Sair</button>
             </>

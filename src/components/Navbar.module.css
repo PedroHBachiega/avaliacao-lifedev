@@ -45,3 +45,71 @@
     font-weight: bold;
     color: #333;
   }
+
+  /* Responsividade simplificada e minimalista para mobile */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      padding: 1em 0.5em;
+      text-align: center;
+    }
+
+    .brand {
+      margin: 0.5em auto;
+      font-size: 1.4em;
+    }
+
+    .links_list {
+      flex-direction: column;
+      width: 100%;
+      padding: 0;
+      margin: 0;
+    }
+
+    .links_list li {
+      margin: 0.3em 0;
+      width: 100%;
+      text-align: center;
+    }
+
+    .links_list li a {
+      display: block;
+      padding: 0.8em;
+      border-radius: 4px;
+      margin: 0.2em 0;
+    }
+
+    .active {
+      border-radius: 4px;
+    }
+
+    .user_name {
+      margin: 0.8em 0;
+      padding: 0.5em;
+      background-color: #f6f6f6;
+      border-radius: 5px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .exit {
+      display: block;
+      margin: 0.5em auto;
+      padding: 0.5em 1.5em;
+      border-radius: 4px;
+      font-size: 1em;
+      background-color: #fff0f0;
+    }
+  }
+
+  /* Ajustes para telas muito pequenas */
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 0.5em;
+    }
+
+    .brand {
+      font-size: 1em;
+    }
+  }

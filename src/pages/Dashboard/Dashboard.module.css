@@ -9,11 +9,13 @@
     margin-bottom: 1em;
     text-align: center;
     font-size: 2em;
+    color: #333;
   }
   
   .dashboard p {
     color: #555;
     margin-bottom: 2em;
+    color: #333;
   }
   
   .noposts {
@@ -68,3 +70,4 @@
     margin: 0 5px;
     text-decoration: none;
   }
+
