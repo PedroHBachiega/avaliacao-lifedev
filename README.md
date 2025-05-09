@@ -1,6 +1,6 @@
 # 📚 Mini DevBlog - React + Firebase + Deploy
 
-Este projeto é uma aplicação completa de blog para desenvolvedores, construída com React e Firebase, incluindo recursos de autenticação, gerenciamento de posts e temas claro/escuro.
+Este projeto é uma aplicação completa de blog para desenvolvedores, construída com React e Firebase, incluindo recursos de autenticação, gerenciamento de posts e temas claro/escuro. Esse projeto foi desenvolvido para a avaliacão de Desenvolvimento Web 3.
 
 ## 🌟 Funcionalidades Implementadas
 
