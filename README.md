@@ -117,7 +117,7 @@ O projeto está configurado para deploy no Firebase Hosting:
 ## 🔗 Links
 
 - [Aplicação em produção](https://avaliacaodw3.web.app)
-- [Repositório no GitHub](https://github.com/seu-usuario/avaliacao-lifedev)
+- [Repositório no GitHub](https://github.com/PedroHBachiega/avaliacao-lifedev)
 
 ## 📜 Licença
 
@@ -125,5 +125,5 @@ Este projeto está sob a licença MIT.
 
 ---
 
-Desenvolvido como parte da avaliação DW3 para o curso de Desenvolvimento Web.
+Desenvolvido como parte da avaliação DW3 
 
