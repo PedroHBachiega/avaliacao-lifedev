@@ -1,0 +1,187 @@
+.profile {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.profile p {
+    color: #aaa;
+    margin-bottom: 2em;
+}
+
+.profile .error {
+    color: #f00;
+    background-color: #ffdddd;
+    border: 1px solid #f00;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.profile .success {
+    color: #0a0;
+    background-color: #ddffdd;
+    border: 1px solid #0a0;
+    padding: 8px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.verification {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.verify_btn {
+    background-color: #856404;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.verify_btn:hover {
+    background-color: #6c5304;
+}
+
+.preview {
+    margin: 10px 0;
+}
+
+.preview img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.danger_zone {
+    margin-top: 40px;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+}
+
+.danger_zone h2 {
+    color: #d33;
+    font-size: 1.2em;
+}
+
+.delete_btn {
+    background-color: #d33;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.delete_btn:hover {
+    background-color: #c22;
+}
+
+.delete_confirm {
+    background-color: #ffdddd;
+    border: 1px solid #f00;
+    padding: 15px;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.delete_confirm p {
+    color: #d33;
+    margin-bottom: 10px;
+}
+
+.delete_confirm input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.delete_actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cancel_btn {
+    background-color: #ccc;
+    color: #333;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm_delete_btn {
+    background-color: #d33;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.confirm_delete_btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    .profile {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+
+    .profile form {
+        width: 100%;
+    }
+
+    .preview img {
+        max-width: 120px;
+        max-height: 120px;
+    }
+
+    .delete_btn, .verify_btn, .confirm_delete_btn, .cancel_btn {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+    }
+}
+
+/* Ajustes para telas muito pequenas */
+@media (max-width: 480px) {
+    .profile h1 {
+        font-size: 1.8rem;
+    }
+    
+    .profile p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5em;
+    }
+
+    .danger_zone h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1em;
+        margin-left: auto;
+        margin-right:auto
+        
+    }
+
+    .delete_actions {
+        flex-direction: column;
+    }
+
+    .cancel_btn {
+        margin-bottom: 10px;
+    }
+} 

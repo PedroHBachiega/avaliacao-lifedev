@@ -9,6 +9,7 @@ const Register = () => {
   const [password, setPassword] = useState("")
   const [confirmPassword, setConfirmPassword] = useState("")
   const [error, setError] = useState("")
+  const [sendVerification, setSendVerification] = useState(true)
 
   const { createUser, error: authError, loading } = useAuthentication()
 
@@ -21,6 +22,7 @@ const Register = () => {
       displayName,
       email,
       password,
+      sendVerification
     }
 
     if (password !== confirmPassword) {
@@ -88,7 +90,19 @@ const Register = () => {
             value={confirmPassword}
           />
         </label>
-        {!loading && <button className="btn">Entrar</button>}
+        <div className={styles.verification_option}>
+          <input
+            type="checkbox"
+            id="sendVerification"
+            name="sendVerification"
+            checked={sendVerification}
+            onChange={(e) => setSendVerification(e.target.checked)}
+          />
+          <label htmlFor="sendVerification">
+            Enviar email de verificação após o registro
+          </label>
+        </div>
+        {!loading && <button className="btn">Cadastrar</button>}
         {loading && (
           <button className="btn" disabled>
             Aguarde...

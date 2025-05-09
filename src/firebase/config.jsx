@@ -3,9 +3,7 @@ import { getAnalytics } from "firebase/analytics"
 import { getFirestore } from "firebase/firestore"
 import { getAuth } from "firebase/auth"
 
-
-
-
+//Sem a configuração do firebase para poder subir o projeto para o github
 
 const app = initializeApp(firebaseConfig)
 const analytics = getAnalytics(app)
